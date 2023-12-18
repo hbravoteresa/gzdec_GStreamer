@@ -1,0 +1,1 @@
+- WIP. Still not working. Zlib infate() function never reaches Z_STREAM_END state.

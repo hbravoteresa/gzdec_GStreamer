@@ -1,0 +1,31 @@
+gzdec: a GStreamer gzip decoder plugin
+######################################
+
+This GStreamer plugin,'gzdec', should receive a stream compressed with gzip and should emit an uncompressed stream. It only has one sink pad and one source pad.
+
+
+REQUIREMENTS
+######################################
+
+The following GZip library is needed:
+
+ - libz.so 
+
+
+BUILD
+######################################
+The plugin can be installed locally by using "$HOME" as prefix:
+
+  $ meson --prefix="$HOME" build/
+  $ ninja -C build/ install
+
+However be advised that the automatic scan of plugins in the user home
+directory won't work under gst-build devenv.
+
+
+LAUNCH:
+######################################
+
+The plugin can be tested launching "test.sh" to prepare the data, where <test.gz> and <output_test> can be configured.
+
+	$ GST_PLUGIN_PATH=build/plugins/ gst-launch-1.0 filesrc location=<test.gz> ! gzdec ! filesink location=<output_test>
